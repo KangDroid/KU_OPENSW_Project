@@ -1,0 +1,74 @@
+{
+  "job": [
+    {
+      "job_identifier":"1",
+      "priority":"1",
+      "burst_time": "10"
+    },
+    {
+      "job_identifier":"2",
+      "priority":"13",
+      "burst_time": "1"
+    },
+    {
+      "job_identifier":"3",
+      "priority":"20",
+      "burst_time": "13"
+    },
+    {
+      "job_identifier":"4",
+      "priority":"-1",
+      "burst_time": "6"
+    },
+    {
+      "job_identifier":"5",
+      "priority":"5",
+      "burst_time": "200"
+    },
+    {
+      "job_identifier":"6",
+      "priority":"10",
+      "burst_time": "50"
+    },
+    {
+      "job_identifier":"7",
+      "priority":"7",
+      "burst_time": "30"
+    },
+    {
+      "job_identifier":"8",
+      "priority":"9",
+      "burst_time": "100"
+    },
+    {
+      "job_identifier":"9",
+      "priority":"8",
+      "burst_time": "130"
+    },
+    {
+      "job_identifier":"10",
+      "priority":"3",
+      "burst_time": "140"
+    },
+    {
+      "job_identifier":"11",
+      "priority":"16",
+      "burst_time": "5"
+    },
+    {
+      "job_identifier":"12",
+      "priority":"11",
+      "burst_time": "3"
+    },
+    {
+      "job_identifier":"13",
+      "priority":"17",
+      "burst_time": "9"
+    },
+    {
+      "job_identifier":"14",
+      "priority":"24",
+      "burst_time": "140"
+    }
+  ]
+}

@@ -27,6 +27,8 @@ public class Menu {
                     schedulingAlgorithmDes();
                     break;
                 case 2:
+                    FCFSSimulator f = new FCFSSimulator();
+                    f.executor();
                     break;
                 case 3:
                     System.out.println("Good Bye!");
