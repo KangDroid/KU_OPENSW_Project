@@ -59,7 +59,7 @@ public class FCFSSimulator {
     }
 
     public void parseJson() {
-        String file_name = "testJob.json";
+        String file_name = "testSmall.json";
         JSONParser jsonParser = new JSONParser();
         FileReader fr = null;
         JSONObject jObject = null;
