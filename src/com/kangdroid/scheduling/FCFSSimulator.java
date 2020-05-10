@@ -47,7 +47,7 @@ public class FCFSSimulator {
             int bt = Integer.parseInt((String)tmp.get("burst_time"));
             int priority = Integer.parseInt((String)tmp.get("priority"));
             synchronized (mJobList) {
-                mJobList.pushJob(new Job(t, bt, priority));
+                mJobList.pushJob(new Job(t, bt, priority, 0));
             }
 
             // Save order.
