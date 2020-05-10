@@ -27,7 +27,7 @@ public class Menu {
                     schedulingAlgorithmDes();
                     break;
                 case 2:
-                    FCFSSimulator f = new FCFSSimulator();
+                    SJFSimulator f = new SJFSimulator();
                     f.executor();
                     break;
                 case 3:

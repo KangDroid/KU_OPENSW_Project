@@ -1,5 +1,7 @@
 package com.kangdroid.scheduling;
 
+import java.util.Arrays;
+
 public class JobQueue {
     private int head; // Location to pop
     private int tail; // Location to push
@@ -35,6 +37,15 @@ public class JobQueue {
         this.tail = 0;
         for (int i = 0; i < max_size; i++) {
             mJobQueue[i] = null;
+        }
+    }
+
+    /**
+     * Sort array by SJF
+     */
+    public void sortSJF() {
+        if (mJobQueue != null) {
+            Arrays.sort(mJobQueue, head, tail);
         }
     }
 
