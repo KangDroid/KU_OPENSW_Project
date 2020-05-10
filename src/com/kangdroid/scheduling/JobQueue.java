@@ -24,8 +24,6 @@ public class JobQueue {
     public Job popJob() {
         // Read Operation
         if (head >= tail) {
-            // Cannot pop
-            //System.out.println("Tail: " + tail + " Head: " + head);
             return null;
         } else {
             return this.mJobQueue[head++]; // Head is NOT affected with PUSH

@@ -54,13 +54,7 @@ public class FCFSSimulator {
             mJobArrivalOrder[i] = Integer.parseInt(t);
 
             // Block till timer finishes.
-            boolean whatever = false;
-            while (timerInterrupt.isAlive())  {
-                if (!whatever) {
-                    //System.out.println("Waiting For: " + i);
-                    whatever = true;
-                }
-            }
+            while (timerInterrupt.isAlive());
         }
     }
 
