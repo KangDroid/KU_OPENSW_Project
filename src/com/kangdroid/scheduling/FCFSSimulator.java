@@ -103,10 +103,21 @@ public class FCFSSimulator {
      * TODO: Calculate Gannt Chart Time Return
      */
     class ConsumerClass extends Thread {
+        long waitedTime[] = new long[mJobCount];
+        int waitedTimeIter = 0;
         @Override
         public void run() {
             int actualCount = 0;
             boolean printed = false;
+            // Average return time
+            long timeReturnStart = System.currentTimeMillis();
+            long timeReturnEnd;
+            int timeReturnNIDLE = 0;
+            int last_value = 0;
+
+            // Averate Wait time
+            long timeWaitStart = System.currentTimeMillis();
+            long timeWaitEnd;
             while (true) {
                 Job tmp;
                 synchronized (mJobList) {
@@ -118,8 +129,13 @@ public class FCFSSimulator {
                         printed = true;
                     }
                 } else {
+                    timeWaitEnd = System.currentTimeMillis();
+                    waitedTime[waitedTimeIter++] = timeWaitEnd - timeWaitStart;
+                    timeWaitStart = System.currentTimeMillis();
                     System.out.println("Running Job");
                     System.out.println(tmp + "\n");
+                    timeReturnNIDLE += tmp.getmBurstTime();
+                    last_value = tmp.getmBurstTime();
                     try {
                         Thread.sleep(tmp.getmBurstTime());
                     } catch (InterruptedException e) {
@@ -130,6 +146,17 @@ public class FCFSSimulator {
                 }
 
                 if (actualCount == mJobCount) {
+                    timeReturnEnd = System.currentTimeMillis();
+                    System.out.println("Average Return Time(With IDLE TIME): " + ((timeReturnEnd - timeReturnStart) / (double)mJobCount));
+                    System.out.println("Average Return Time(WITHOUT IDLE TIME): " + (timeReturnNIDLE / (double)mJobCount));
+
+                    long timeT = 0;
+                    for (int i = 0; i < mJobCount; i++) {
+                        timeT += waitedTime[i];
+                    }
+
+                    System.out.println("Average Waited Time(With IDLE TIME): " + (timeT / (double)mJobCount));
+                    System.out.println("Average Waited Tiem(WITHOUT IDLE TIME): " + (timeReturnNIDLE - last_value) / (double)mJobCount);
                     break;
                 }
             }
