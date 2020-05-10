@@ -98,21 +98,22 @@ public class FCFSSimulator {
      */
     class ConsumerClass extends Thread {
         long waitedTime[] = new long[mJobCount];
-        int waitedTimeIter = 0;
+        long returnTime[] = new long[mJobCount];
+        int waitedTimeIter = 0, returnTimeIter = 0;
         @Override
         public void run() {
             int actualCount = 0;
             boolean printed = false;
             // Average return time
-            long timeReturnStart = System.currentTimeMillis();
-            long timeReturnEnd;
             int timeReturnNIDLE = 0;
             int timeReturnNIDLEFinal = 0;
             int last_value = 0;
 
+            // Timer
+            long timer_t = System.currentTimeMillis();
+            long awt_timer = System.currentTimeMillis();
+
             // Averate Wait time
-            long timeWaitStart = System.currentTimeMillis();
-            long timeWaitEnd;
             while (true) {
                 Job tmp;
                 synchronized (mJobList) {
@@ -124,9 +125,10 @@ public class FCFSSimulator {
                         printed = true;
                     }
                 } else {
-                    timeWaitEnd = System.currentTimeMillis();
-                    waitedTime[waitedTimeIter++] = timeWaitEnd - timeWaitStart;
-                    timeWaitStart = System.currentTimeMillis();
+                    // AWT
+                    waitedTime[waitedTimeIter++] = System.currentTimeMillis() - awt_timer;
+
+                    // Run Job
                     System.out.println("Running Job");
                     System.out.println(tmp + "\n");
                     timeReturnNIDLE += tmp.getmBurstTime();
@@ -137,21 +139,27 @@ public class FCFSSimulator {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+
+                    // Record time [ART]
+                    returnTime[returnTimeIter++] = System.currentTimeMillis() - timer_t;
+
                     actualCount++;
                     printed = false;
                 }
 
                 if (actualCount == mJobCount) {
-                    timeReturnEnd = System.currentTimeMillis();
-                    System.out.println("Average Return Time(With IDLE TIME): " + ((timeReturnEnd - timeReturnStart) / (double)mJobCount));
+                    long final_value = 0;
+                    long awt_final = 0;
+                    for (int i = 0; i < mJobCount; i++) {
+                        final_value += returnTime[i];
+                        awt_final += waitedTime[i];
+                        System.out.println(waitedTime[i]);
+                    }
+                    //timeReturnEnd = System.currentTimeMillis();
+                    System.out.println("Average Return Time(With IDLE TIME): " + ((final_value) / (double)mJobCount));
                     System.out.println("Average Return Time(WITHOUT IDLE TIME): " + (timeReturnNIDLEFinal / (double)mJobCount));
 
-                    long timeT = 0;
-                    for (int i = 0; i < mJobCount; i++) {
-                        timeT += waitedTime[i];
-                    }
-
-                    System.out.println("Average Waited Time(With IDLE TIME): " + (timeT / (double)mJobCount));
+                    System.out.println("Average Waited Time(With IDLE TIME): " + (awt_final / (double)mJobCount));
                     System.out.println("Average Waited Tiem(WITHOUT IDLE TIME): " + (timeReturnNIDLEFinal - last_value) / (double)mJobCount);
                     break;
                 }
