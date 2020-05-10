@@ -107,6 +107,7 @@ public class FCFSSimulator {
             long timeReturnStart = System.currentTimeMillis();
             long timeReturnEnd;
             int timeReturnNIDLE = 0;
+            int timeReturnNIDLEFinal = 0;
             int last_value = 0;
 
             // Averate Wait time
@@ -129,7 +130,8 @@ public class FCFSSimulator {
                     System.out.println("Running Job");
                     System.out.println(tmp + "\n");
                     timeReturnNIDLE += tmp.getmBurstTime();
-                    last_value = tmp.getmBurstTime();
+                    timeReturnNIDLEFinal += timeReturnNIDLE;
+                    last_value = timeReturnNIDLE;
                     try {
                         Thread.sleep(tmp.getmBurstTime());
                     } catch (InterruptedException e) {
@@ -142,7 +144,7 @@ public class FCFSSimulator {
                 if (actualCount == mJobCount) {
                     timeReturnEnd = System.currentTimeMillis();
                     System.out.println("Average Return Time(With IDLE TIME): " + ((timeReturnEnd - timeReturnStart) / (double)mJobCount));
-                    System.out.println("Average Return Time(WITHOUT IDLE TIME): " + (timeReturnNIDLE / (double)mJobCount));
+                    System.out.println("Average Return Time(WITHOUT IDLE TIME): " + (timeReturnNIDLEFinal / (double)mJobCount));
 
                     long timeT = 0;
                     for (int i = 0; i < mJobCount; i++) {
@@ -150,7 +152,7 @@ public class FCFSSimulator {
                     }
 
                     System.out.println("Average Waited Time(With IDLE TIME): " + (timeT / (double)mJobCount));
-                    System.out.println("Average Waited Tiem(WITHOUT IDLE TIME): " + (timeReturnNIDLE - last_value) / (double)mJobCount);
+                    System.out.println("Average Waited Tiem(WITHOUT IDLE TIME): " + (timeReturnNIDLEFinal - last_value) / (double)mJobCount);
                     break;
                 }
             }

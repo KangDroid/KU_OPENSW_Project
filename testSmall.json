@@ -3,17 +3,17 @@
     {
       "job_identifier":"1",
       "priority":"1",
-      "burst_time": "10"
+      "burst_time": "24000"
     },
     {
       "job_identifier":"2",
       "priority":"13",
-      "burst_time": "1"
+      "burst_time": "3000"
     },
     {
       "job_identifier":"3",
       "priority":"20",
-      "burst_time": "13"
+      "burst_time": "3000"
     }
   ]
 }
