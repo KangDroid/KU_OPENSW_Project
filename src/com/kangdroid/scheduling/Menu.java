@@ -27,7 +27,7 @@ public class Menu {
                     schedulingAlgorithmDes();
                     break;
                 case 2:
-                    SJFSimulator f = new SJFSimulator();
+                    PrioritySimulator f = new PrioritySimulator();
                     f.executor();
                     break;
                 case 3:
