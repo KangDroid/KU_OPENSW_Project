@@ -10,7 +10,7 @@ public class Menu {
 
         while (true) {
             System.out.println("1. About Scheduling algorithm");
-            System.out.println("2. Non-Preemptive Scheduling Gannt Chart");
+            System.out.println("2. Non-Preemptive Scheduling Simulator");
             System.out.println("3. Exit Program");
             System.out.print("Input Menu number: ");
 
@@ -27,8 +27,7 @@ public class Menu {
                     schedulingAlgorithmDes();
                     break;
                 case 2:
-                    FCFSSimulator f = new FCFSSimulator();
-                    f.executor();
+                    schedulingAlgorithmEx();
                     break;
                 case 3:
                     System.out.println("Good Bye!");
@@ -36,6 +35,41 @@ public class Menu {
                     return; // Exit function
                 default:
                     System.out.println("Wrong number entered. Please enter again.");
+            }
+        }
+    }
+
+    public void schedulingAlgorithmEx() {
+        int input = 0;
+        Scanner sysInput = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("This will execute pre-defined schedule algorithm based on json-shaped working file");
+            System.out.println("1. FCFS");
+            System.out.println("2. SJF");
+            System.out.println("3. Priority Scheduling");
+            System.out.println("4. Exit");
+            try {
+                input = sysInput.nextInt();
+            } catch (InputMismatchException ime) {
+                System.out.println("Only numbers are allowed. Please enter again.");
+                if (sysInput.hasNextLine()) sysInput.nextLine(); // Clears buffer
+                continue;
+            }
+
+            if (input == 1) {
+                FCFSSimulator fcsim = new FCFSSimulator();
+                fcsim.executor();
+            } else if (input == 2) {
+                SJFSimulator sjfsim = new SJFSimulator();
+                sjfsim.executor();
+            } else if (input == 3) {
+                PrioritySimulator psm = new PrioritySimulator();
+                psm.executor();
+            } else if (input == 4) {
+                return;
+            } else {
+                System.out.println("Wrong number entered. Please enter again.");
             }
         }
     }
