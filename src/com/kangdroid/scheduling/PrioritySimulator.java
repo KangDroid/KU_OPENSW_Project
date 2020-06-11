@@ -51,6 +51,7 @@ public class PrioritySimulator {
             synchronized (mJobList) {
                 mJobList.pushJob(new Job(t, bt, priority, 2));
                 mJobList.sortSJF();
+                mJobList.checkPriority();
             }
 
             // Save order.

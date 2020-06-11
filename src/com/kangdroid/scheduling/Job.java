@@ -5,12 +5,20 @@ public class Job implements Comparable<Job> {
     private int mBurstTime;
     private int mPriority;
     private int mode; // 0 for FCFS, 1 for SJF, 2 for Priority
+    private long pushedTimeM;
 
     public Job(String job, int bursttime, int priority, int md) {
         this.mJobIdentifier = job;
         this.mBurstTime = bursttime;
         this.mPriority = priority;
         this.mode = md;
+        this.pushedTimeM = System.currentTimeMillis();
+    }
+
+    public long getPushedTimeM() { return this.pushedTimeM; }
+
+    public void increasePriority() {
+        this.mPriority--;
     }
 
     public int getmBurstTime() {

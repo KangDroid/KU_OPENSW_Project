@@ -49,6 +49,15 @@ public class JobQueue {
         }
     }
 
+    public void checkPriority() {
+        long curTime = System.currentTimeMillis();
+        for (int i = head; i < tail; i++) {
+            if (curTime - mJobQueue[i].getPushedTimeM() >= 10000) {
+                mJobQueue[i].increasePriority();
+            }
+        }
+    }
+
     public int getMax_size() {
         return this.max_size;
     }
