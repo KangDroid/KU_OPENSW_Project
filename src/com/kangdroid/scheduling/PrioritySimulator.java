@@ -15,10 +15,12 @@ public class PrioritySimulator {
     private JobQueue mJobList;
     private int mJobArrivalOrder[];
     private int mJobCount;
+    String file_name;
 
-    public PrioritySimulator() {
+    public PrioritySimulator(String f) {
         mJobList = new JobQueue();
         mJobArrivalOrder = new int[mJobList.getMax_size()];
+        this.file_name = f;
     }
 
     public void executor() {
@@ -62,7 +64,6 @@ public class PrioritySimulator {
     }
 
     public void parseJson() {
-        String file_name = "testSmall.json";
         JSONParser jsonParser = new JSONParser();
         FileReader fr = null;
         JSONObject jObject = null;

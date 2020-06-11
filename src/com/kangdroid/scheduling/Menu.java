@@ -39,11 +39,28 @@ public class Menu {
         }
     }
 
+    public String enterFileName() {
+        String input_name;
+        Scanner inputFile = new Scanner(System.in);
+        System.out.print("Enter JSON File Location: ");
+        input_name = inputFile.nextLine();
+
+        if (input_name.length() == 0) {
+            System.out.println("Using default JSON.");
+            input_name = "testSmall.json";
+        } else {
+            input_name = inputFile.nextLine();
+        }
+
+        return input_name;
+    }
+
     public void schedulingAlgorithmEx() {
         int input = 0;
         Scanner sysInput = new Scanner(System.in);
 
         while (true) {
+            String file_loc = enterFileName();
             System.out.println("This will execute pre-defined schedule algorithm based on json-shaped working file");
             System.out.println("1. FCFS");
             System.out.println("2. SJF");
@@ -58,14 +75,17 @@ public class Menu {
             }
 
             if (input == 1) {
-                FCFSSimulator fcsim = new FCFSSimulator();
+                FCFSSimulator fcsim = new FCFSSimulator(file_loc);
                 fcsim.executor();
+                return;
             } else if (input == 2) {
-                SJFSimulator sjfsim = new SJFSimulator();
+                SJFSimulator sjfsim = new SJFSimulator(file_loc);
                 sjfsim.executor();
+                return;
             } else if (input == 3) {
-                PrioritySimulator psm = new PrioritySimulator();
+                PrioritySimulator psm = new PrioritySimulator(file_loc);
                 psm.executor();
+                return;
             } else if (input == 4) {
                 return;
             } else {

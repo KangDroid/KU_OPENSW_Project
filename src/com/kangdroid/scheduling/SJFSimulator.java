@@ -15,10 +15,12 @@ public class SJFSimulator {
     private JobQueue mJobList;
     private int mJobArrivalOrder[];
     private int mJobCount;
+    String file_name;
 
-    public SJFSimulator() {
+    public SJFSimulator(String f_name) {
         mJobList = new JobQueue();
         mJobArrivalOrder = new int[mJobList.getMax_size()];
+        this.file_name = f_name;
     }
 
     public void executor() {
@@ -62,7 +64,6 @@ public class SJFSimulator {
     }
 
     public void parseJson() {
-        String file_name = "testSmall.json";
         JSONParser jsonParser = new JSONParser();
         FileReader fr = null;
         JSONObject jObject = null;

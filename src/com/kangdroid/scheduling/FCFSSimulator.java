@@ -15,8 +15,10 @@ public class FCFSSimulator {
     private JobQueue mJobList;
     private int mJobArrivalOrder[];
     private int mJobCount;
+    String file_name;
 
-    public FCFSSimulator() {
+    public FCFSSimulator(String file_name) {
+        this.file_name = file_name;
         mJobList = new JobQueue();
         mJobArrivalOrder = new int[mJobList.getMax_size()];
     }
@@ -59,7 +61,6 @@ public class FCFSSimulator {
     }
 
     public void parseJson() {
-        String file_name = "testSmall.json";
         JSONParser jsonParser = new JSONParser();
         FileReader fr = null;
         JSONObject jObject = null;
