@@ -42,7 +42,7 @@ public class Menu {
     public String enterFileName() {
         String input_name;
         Scanner inputFile = new Scanner(System.in);
-        System.out.print("Enter JSON File Location: ");
+        System.out.print("Enter JSON File Location(Leave blank to use default testcase): ");
         input_name = inputFile.nextLine();
 
         if (input_name.length() == 0) {
