@@ -97,9 +97,6 @@ public class PrioritySimulator {
         }
     }
 
-    /**
-     * TODO: Calculate Gannt Chart Time Return
-     */
     class ConsumerClass extends Thread {
         long waitedTime[] = new long[mJobCount];
         long returnTime[] = new long[mJobCount];
