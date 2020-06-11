@@ -155,7 +155,7 @@ public class PrioritySimulator {
                     for (int i = 0; i < mJobCount; i++) {
                         final_value += returnTime[i];
                         awt_final += waitedTime[i];
-                        System.out.println(waitedTime[i]);
+
                     }
                     //timeReturnEnd = System.currentTimeMillis();
                     System.out.println("Average Return Time(With IDLE TIME): " + ((final_value) / (double)mJobCount));
