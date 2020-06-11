@@ -18,6 +18,7 @@ public class Job implements Comparable<Job> {
     public long getPushedTimeM() { return this.pushedTimeM; }
 
     public void increasePriority() {
+        this.pushedTimeM = System.currentTimeMillis();
         this.mPriority--;
     }
 
