@@ -79,6 +79,7 @@ public class PrioritySimulator {
             jObject = (JSONObject)jsonParser.parse(fr);
         } catch (ParseException | IOException pe) {
             System.out.println("Parse failed");
+            return;
         }
 
         // in this state, parsing is done.
