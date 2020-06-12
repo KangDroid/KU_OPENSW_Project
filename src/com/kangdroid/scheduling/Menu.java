@@ -46,10 +46,8 @@ public class Menu {
         input_name = inputFile.nextLine();
 
         if (input_name.length() == 0) {
-            System.out.println("Using default JSON.");
+            System.out.println("Using default location of JSON.");
             input_name = "testSmall.json";
-        } else {
-            input_name = inputFile.nextLine();
         }
 
         return input_name;
