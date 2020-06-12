@@ -7,6 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/json-simple-1.1.1"/>
-	<classpathentry kind="lib" path="C:/Users/kangd/OneDrive - konkuk.ac.kr/University/2nd/1st_Semester/OpenSW/Project/SchedulingProject/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="out/production/SchedulingProject"/>
 </classpath>
